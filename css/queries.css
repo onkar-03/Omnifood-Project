@@ -1,0 +1,438 @@
+/* rem & em do not depend on html font-size in media queries !! */
+/* Instead, 1rem = 1em = 16px */
+
+/* Some browsers there might be glitch using rem in media queries hence using em instead */
+
+/* ********************** */
+/* ^ Below 1344px (Smaller Desktops)  */
+/* ********************** */
+
+/* 1. Breakpoint 1344px screen size : 1350 / 16 = 84 (approx) */
+
+@media (max-width: 84em) {
+  /* Changing the width of the hero same as that to the other containers now */
+  .hero {
+    max-width: 1200rem;
+  }
+
+  /* Changing the size opf the heading primary */
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ********************** */
+/* ^ Below 1200px (Landscape Tablets Screen)  */
+/* ********************** */
+
+/* 2. Breakpoint 1200px : 1200 / 16 = 75(approx)*/
+
+@media (max-width: 75em) {
+  /* We want to change the Size of all the texts & images as they look way big, hence changing the root declaration of 1rem = 10px*/
+
+  html {
+    /* Default font-size: 16px */
+    /* font-size we want 9px; */
+    /* 9 / 16 = 0.65625 = 56.25% */
+    /* Percentage of User Browser font-size setting */
+    font-size: 56.25%;
+  }
+
+  /* Changing the Grid Col & row gaps */
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+
+  /* Changing the size opf the heading secondary */
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  /* Changing the size opf the heading tertiary */
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+
+  /* Aligning again the Header section with the rest of the container for different screen sizes */
+  .header {
+    padding: 0 3.2rem;
+  }
+
+  /* Adjusting the gap between the nav links  */
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+
+  /* Handling the gap of the hero section to match with the rest of the containers alignment*/
+  .hero {
+    gap: 4.8rem;
+  }
+
+  /* Handling the text in the testimonials section of various customers */
+  .testimonials-container {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+/* ********************** */
+/* ^ Below 940px (Landscape Tablets Screen)  */
+/* ********************** */
+
+/* 3. Breakpoint 900px : 940 / 16 = 59(approx)*/
+
+@media (max-width: 59em) {
+  html {
+    /* 8px / 16px = 0.50 = 50% */
+    font-size: 50%;
+  }
+
+  /* Changing the hero section to one column, adjusting padding & gap of the section again for this breakpoint*/
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+  }
+
+  /* Aligning Text now to the center of the hero section  */
+  .hero-text-box {
+    text-align: center;
+  }
+
+  /* Aligning Image now to the center of the hero section  */
+  .hero-img-box {
+    /* As Image is also an inline element hence its affected by the text-align: center;  */
+    text-align: center;
+  }
+
+  .hero-img {
+    width: 60%;
+  }
+
+  /* Formatting all the necessary things of the Hero Section */
+  .delivered-meals {
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
+  /* Adjusting the featured Company logos */
+  .logo-img {
+    height: 2.4rem;
+  }
+
+  /* Adjusting the Steps Content of the How it works section */
+  .step-number {
+    font-size: 7.4rem;
+  }
+
+  /* Adjusting the padding in the meal cards */
+  .meal-content {
+    padding: 2.4rem 3.2rem 3.2rem;
+  }
+
+  /* Changing the testimonials to just 1 column now */
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  /* Handling the Image display of the gallery section & changing it to a grid of 6 X 2 */
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .cta {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--form {
+    margin-top: 1.2rem;
+  }
+
+  /* MOBILE NAVIGATION */
+
+  .btn-mobile-nav {
+    /* Show the Menu Icon as block when this media query is active */
+    display: block;
+  }
+
+  .main-nav {
+    background-color: hsla(0, 0%, 100%, 0.5);
+
+    /* For safari Browser we ned to user webkit prefix  */
+    -webkit-backdrop-filter: blur(5px);
+
+    /* To blur the background content when menu is opened */
+    backdrop-filter: blur(5px);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+
+    /* Sliding Menu Setup */
+    transform: translateX(100%);
+    /* & But setting this we still can slide the page and see the hidden section, hence to counter this we add overflow-x:hidden; in boy of general.css */
+
+    /* Adding transition to slide in menu */
+    transition: all 0.5s ease-out;
+
+    /* Center & format Nav Items */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Hide Nav */
+    /* Allows no transition at all when display:none; */
+    /* display: none; */
+
+    /* ^ Creating a CSS only open and Close system without Js */
+
+    /* To Hide Elements without display:none; we need to follow some steps  */
+
+    /* 1. Hide Element visually */
+    opacity: 0;
+
+    /* 2. Make it unaccessible to mouse & keyboard */
+    pointer-events: none;
+
+    /* 3. Hide it from Screen Readers */
+    visibility: hidden;
+  }
+
+  /* Making it visible on opening Menu*/
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+
+    /* Sliding the Menu In */
+    transform: translate(0);
+  }
+
+  /* Showing Cross Icons when Nav is Open */
+  /* Using a class added to the parent of nav items */
+  .nav-open .icon-mobile-nav[name='close-outline'] {
+    display: block;
+  }
+
+  /* Hiding the Menu Icon */
+  .nav-open .icon-mobile-nav[name='menu-outline'] {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
+}
+
+/* ********************** */
+/* Below 704px (Responding to Smaller Screens)  */
+/* ********************** */
+
+/* 3. Breakpoint 704px : 704 / 16 = 44(approx)*/
+
+@media (max-width: 44em) {
+  /* Setting all the 3/4 columns grid to 2X2 Grid */
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* centering & spanning the Content */
+  .diets {
+    grid-column: 1/-1;
+    justify-self: center;
+  }
+
+  /* adjusting the Heading Secondary gaps */
+  .heading-secondary {
+    margin-bottom: 4.8rem;
+  }
+
+  /* Adjusting the Pricing Plans Cards*/
+  .pricing-plan {
+    width: 100%;
+  }
+
+  /* Grid Layout change to 6 Cols */
+  .grid-footer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* Spanning them 3 columns each */
+  .logo-col,
+  .address-col {
+    grid-column: span 3;
+  }
+
+  /* Having the Navigation Sections in row 1 & span 2 columns each*/
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+    gap: 3.2rem;
+  }
+}
+
+/* ********************** */
+/* Below 550px (Responding to Mobile Phones)  */
+/* ********************** */
+
+/* 3. Breakpoint 550px : 550 / 16 = 34(approx)*/
+
+@media (max-width: 34em) {
+  /* All Grids to One Column */
+
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+  }
+
+  /* Handling Gaps of hero, grid & Section-hero */
+  .grid {
+    gap: 4.8rem;
+  }
+
+  .hero {
+    padding: 0 3.2rem;
+  }
+
+  .section-hero {
+    padding: 2.4rem 0 6.4rem 0;
+  }
+
+  /* Handling the Buttons of the Hero Section */
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 1.6rem;
+  }
+
+  /* Adjusting the Food Image of Hero Section */
+  .hero-img {
+    width: 80%;
+  }
+
+  /* Adjusting Featured Company Logos */
+  .logos img {
+    height: 1.2rem;
+  }
+
+  /* Adjusting  the Images at the Top then the Content in teh Bottom of How it Works Section */
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  /* Moving the Images closer to their content */
+  .step-img-box {
+    transform: translateY(2.4rem);
+  }
+
+  /* Testimonials Section making it to 1 column Grid */
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  /* Gallery Images shifted to 4X3 columns */
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+
+  /* Handling the Call to Action Section */
+
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  /* ! As the Image Section had no Content it has no height hence it disappears when grid column set to 1, initially Image was visible as the Contents were side by side & Image took the Same Height as its Neighboring Content height*/
+
+  /* Hence to make the image visible we give it a height */
+  .cta-img-box {
+    height: 32rem;
+    grid-row: 1;
+  }
+
+  .cta-text-box {
+    padding: 3.2rem;
+  }
+}
+
+/* 
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 
+*/
+
+/* Fixing Browser Gap Property of FlexBox */
+.no-flexbox-gap .main-nav-list li:not(:last-child) {
+  margin-right: 4.8rem;
+}
+
+.no-flexbox-gap .list-item:not(:last-child) {
+  margin-bottom: 1.6rem;
+}
+
+.no-flexbox-gap .list-icon:not(:last-child) {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .delivered-faces {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .meal-attribute:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.no-flexbox-gap .meal-icon {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .footer-row div:not(:last-child) {
+  margin-right: 6.4rem;
+}
+
+.no-flexbox-gap .social-links li:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.no-flexbox-gap .footer-nav li:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+@media (max-width: 75em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 3.2rem;
+  }
+}
+
+@media (max-width: 59em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 4.8rem;
+  }
+}
